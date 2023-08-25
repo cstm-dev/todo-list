@@ -1,0 +1,21 @@
+<div class="blue-back container-fluid">
+  <div class="container menu text-center">
+    <div class="row roboto h3 pt-5">
+      <a id="today" href="/today" class="col white-back dark-blue-font">TODAY</a>
+      <a id="work" href="/work" class="col dark-blue-back white-font">WORK</a>
+    </div>
+    <div class="row roboto h3 pt-5">
+      <div class="col white-font">
+        <%= new Date().toLocaleDateString("de-DE", {weekday: "short", day:
+        "numeric", month: "2-digit", year: "numeric"}) %>
+      </div>
+    </div>
+    <div class="row pt-5">
+      <div class="col">
+        <form action="" method="post">
+          <input class="add-task-icon" type="image" src="./assets/images/yin_yang.png" alt="Yin and Yang" name="newEntry" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

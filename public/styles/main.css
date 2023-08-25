@@ -1,0 +1,124 @@
+/* Sizes */
+.footer,
+.header,
+.navigation {
+  min-height: 7.5vh;
+}
+
+.index {
+  min-height: 50vh;
+}
+
+.today,
+.work {
+  min-height: 42.5vh;
+}
+
+.menu {
+  min-height: 35vh;
+}
+
+/* Colors */
+.blue-back {
+  background-color: #05316e;
+}
+
+.white-back {
+  background-color: white;
+}
+
+.dark-blue-back {
+  background-color: #051122;
+}
+
+.white-font {
+  color: white;
+}
+
+.dark-blue-font {
+  color: #051122;
+}
+
+/* Fonts */
+.garamond {
+  font-family: "Cormorant Garamond", serif;
+}
+
+.roboto {
+  font-family: "Roboto", sans-serif;
+}
+
+.p {
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.h1 {
+  font-weight: 700;
+  font-size: 3.052rem;
+}
+
+.h2 {
+  font-weight: 700;
+  font-size: 2.441rem;
+}
+
+.h3 {
+  font-weight: 700;
+  font-size: 1.953rem;
+}
+
+.todo-text {
+  font-weight: 500;
+  font-size: 1.563rem;
+}
+
+.wide-letter-spacing {
+  letter-spacing: 0.05em;
+}
+
+/* Elements */
+.inline-white {
+  box-shadow: 0 3px 0 white inset;
+}
+
+.add-task-icon {
+  height: 128px;
+  width: 128px;
+}
+
+.todo-container {
+  border-radius: 15px 0 0 15px;
+  border: 2px solid #051122;
+}
+
+.todo-icon {
+  height: 32px;
+  width: 32px;
+}
+
+input[type="text"] {
+  border: none;
+  outline: none;
+}
+
+/* Else */
+.pointer {
+  cursor: pointer;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}

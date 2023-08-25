@@ -1,0 +1,27 @@
+<%- include('./partials/header.ejs') %>
+
+<div class="container text-center">
+  <div class="today dark-blue-font garamond pt-5">
+    <% if (locals.workList.length > 0) { %>
+    <% workList.forEach((e, i) => { %>
+    <div class="row todo-text pb-3">
+      <div class="col-10 todo-container text-end py-3">
+        <form action="" method="post">
+          <input id="<%= i %>" class="text-end" type="text" name="textTodoEntry" value="<%= e %>">
+        </form>
+      </div>
+      <div class="col-2 py-3 dark-blue-back">
+        <img class="todo-icon" src="/assets/images/checkmark_unchecked.png" alt="Checkmark unchecked">
+      </div>
+    </div>
+    <% }) %>
+    <% } else { %>
+    <p class="mb-0 h2">EMPTY</p>
+    <% } %>
+  </div>
+  <div class="navigation"></div>
+</div>
+
+<%- include('./partials/menu.ejs') %>
+
+<%- include('./partials/footer.ejs') %>
