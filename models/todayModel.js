@@ -15,6 +15,6 @@ const todaySchema = new mongoose.Schema({
 	},
 });
 
-const Today = mongoose.model("today", todaySchema);
+const Today = mongoose.model("Today", todaySchema);
 
 export { Today };
