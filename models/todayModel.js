@@ -1,7 +1,10 @@
 import mongoose from "mongoose";
 
 const todaySchema = new mongoose.Schema({
-	entry: String,
+	entry: {
+		type: String,
+		default: ""
+	},
 	checked: {
 		type: Boolean,
 		default: false,

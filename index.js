@@ -1,8 +1,8 @@
 import express from "express";
-import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
+import { Today } from "./models/todayModel.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -11,30 +11,47 @@ const db = "todoAppDb";
 const _URI = `mongodb://127.0.0.1:27017/${db}`;
 
 app.use(express.static(`${__dirname}/public`));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
 	res.render(`${__dirname}/views/index.ejs`);
 });
 
 app.post("/", (req, res) => {
-	res.render(`${__dirname}/views/index.ejs`);
+	res.status(403).redirect("/");
 });
 
-app.get("/today", (req, res) => {
-	res.render(`${__dirname}/views/today.ejs`, { todayList: todayList });
+app.get("/today", async (req, res) => {
+	try {
+		const allEntries = await Today.find({}, { entry: 1, checked: 1 }).exec();
+
+		res.status(200).render(`${__dirname}/views/today.ejs`, { todayList: allEntries });
+	} catch (err) {
+		console.error("Couldn't get all entries", err.message);
+		res.status(500).json({ message: err.message });
+	}
 });
 
-app.post("/today", (req, res) => {
-	if (req.body.textTodoEntry) {
-		todayList[todayList.indexOf("")] = req.body.textTodoEntry;
-	}
+app.post("/today", async (req, res) => {
+	try {
+		const newEntry = await Today.create({}).exec();
 
-	if (req.body["newEntry.x"]) {
-		todayList.push("");
+		res.status(201).redirect("/today");
+	} catch (err) {
+		console.error("Couldn't create a new entry", err.message);
+		res.status(500).json({ message: err.message });
 	}
+});
 
-	res.render(`${__dirname}/views/today.ejs`, { todayList: todayList });
+app.post("/put/todayEntry/:id", async (req, res) => {
+	try {
+		const updateEntry = await Today.updateOne({ _id: req.params.id }, { entry: req.body.textTodoEntry, checked: req.body.checkedTodoEntry }).exec();
+		console.log(req.body);
+		res.status(200).redirect("/today");
+	} catch (err) {
+		console.error("Couldn't create a new entry", err.message);
+		res.status(500).json({ message: err.message });
+	}
 });
 
 app.get("/work", (req, res) => {
@@ -60,6 +77,6 @@ try {
 	app.listen(port, () => {
 		console.log(`Server running on port ${port}`);
 	});
-} catch (error) {
-	console.error("Error encountered:", error);
+} catch (err) {
+	console.error("Error encountered:", err);
 }

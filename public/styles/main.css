@@ -100,6 +100,7 @@
 input[type="text"] {
   border: none;
   outline: none;
+  width: 100%;
 }
 
 /* Else */
@@ -121,4 +122,10 @@ a:hover {
 
 a:active {
   text-decoration: none;
+}
+
+button {
+  border: none;
+  background: none;
+  padding: 0px;
 }
